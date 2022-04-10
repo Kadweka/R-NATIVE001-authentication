@@ -1,26 +1,26 @@
 import { View, Text,Image,StyleSheet,ScrollView} from 'react-native'
-import Logo from '../../../assets/images/logo.png'
 import React,{useState} from 'react'
 import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimensions'
 import CustomInput from '../../Components/CustomInput'
 import CustomButton from '../../Components/CustomButton/CustomButton'
-import SocialSignButton from '../../Components/SocialSignButton'
+import { useNavigation } from '@react-navigation/native'
+
 const ConfirmEmailScreen = () => {
+  const {height} = useWindowDimensions();
+  const [code,setConfimationCode]=useState();
+  const navigation = useNavigation()
 
  const onConfirmnPressed = () =>{
-   console.warn('Confirm Pressed')
- }
+  navigation.navigate('Home')
+}
 
 const onResendPressed= () => {
   console.warn('Rensend Confirmation Code')
 }
 const onSignInPressed=()=>{
-    console.warn('Back To Sign!!')
+  navigation.navigate('SignIn')
 
 }
-  const {height} = useWindowDimensions();
-  const [code,setConfimationCode]=useState();
-  const [password,setUserpassword]=useState()
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>

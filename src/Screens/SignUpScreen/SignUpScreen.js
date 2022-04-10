@@ -4,12 +4,21 @@ import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimen
 import CustomInput from '../../Components/CustomInput'
 import CustomButton from '../../Components/CustomButton/CustomButton'
 import SocialSignButton from '../../Components/SocialSignButton'
+import { useNavigation } from '@react-navigation/native'
+
 const SignUpScreen = () => {
+  const {height} = useWindowDimensions();
+  const [username,setUsername]=useState();
+  const [password,setUserpassword]=useState()
+  const [email,setUserEmail]=useState();
+  const navigation = useNavigation()
+  const [passwordRepeat,setUserpasswordRepeat]=useState()
+
  const onRegisterPressed = () =>{
-   console.warn('Register')
- }
+  navigation.navigate('SignIn')
+}
 const onSignInPressed= () => {
-  console.warn('Create A New Account')
+  navigation.navigate('SignIn')
 }
 const onPrivacyPressed= () => {
     console.warn('Privacy Policy')
@@ -17,11 +26,6 @@ const onPrivacyPressed= () => {
   const onTermsOfUsePressed= () => {
     console.warn('Terms Of Use')
   }
-  const {height} = useWindowDimensions();
-  const [username,setUsername]=useState();
-  const [password,setUserpassword]=useState()
-  const [email,setUserEmail]=useState();
-  const [passwordRepeat,setUserpasswordRepeat]=useState()
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>

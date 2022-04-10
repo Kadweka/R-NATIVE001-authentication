@@ -5,9 +5,9 @@ import React from 'react'
 
 export default function App() {
   return (
-  <SafeAreaView styles={styles.root}>
+  // <SafeAreaView styles={styles.root}>
     <Navigation/>
-  </SafeAreaView>
+  // </SafeAreaView>
   );
 }
 

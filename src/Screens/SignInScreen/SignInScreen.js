@@ -5,22 +5,22 @@ import useWindowDimensions from 'react-native/Libraries/Utilities/useWindowDimen
 import CustomInput from '../../Components/CustomInput'
 import CustomButton from '../../Components/CustomButton/CustomButton'
 import SocialSignButton from '../../Components/SocialSignButton'
-
+import { useNavigation } from '@react-navigation/native'
 
 const SignInScreen = () => {
- const onSignInPressed = () =>{
-   console.warn('Signed In')
- }
- const onForgotPassword = () =>{
-  console.warn('Forgot Password')
-}
-const onSignUpPressed= () => {
-  console.warn('Create A New Account')
-}
+  const navigation = useNavigation()
   const {height} = useWindowDimensions();
   const [username,setUsername]=useState();
   const [password,setUserpassword]=useState()
-
+ const onSignInPressed = () =>{
+   navigation.navigate('Home')
+ }
+ const onForgotPassword = () =>{
+  navigation.navigate('ForgotPassword')
+}
+const onSignUpPressed= () => {
+  navigation.navigate('SignUp')
+}
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
     <View style={styles.root}>
