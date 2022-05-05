@@ -7,6 +7,11 @@ import SocialSignButton from '../../Components/SocialSignButton'
 import { useNavigation } from '@react-navigation/native'
 
 const SignUpScreen = () => {
+  const requestOptions = {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ postName: 'React updates ' })
+};
   const {height} = useWindowDimensions();
   const [username,setUsername]=useState();
   const [password,setUserpassword]=useState()
@@ -14,7 +19,22 @@ const SignUpScreen = () => {
   const navigation = useNavigation()
   const [passwordRepeat,setUserpasswordRepeat]=useState()
 
- const onRegisterPressed = () =>{
+//  const onRegisterPressed = () =>{
+  const onRegisterPressed = async () => {
+  try {
+    await fetch(
+        'http://localhost:3000/auth/signup', requestOptions)
+        .then(response => {
+            response.json()
+                .then(data => {
+                    Alert.alert("Post created at : ", 
+                    data.createdAt);
+                });
+        })
+}
+catch (error) {
+    console.error(error);
+}
   navigation.navigate('SignIn')
 }
 const onSignInPressed= () => {
